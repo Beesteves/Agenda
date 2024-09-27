@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Agenda de Contatos',
       theme: ThemeData(primarySwatch: Colors.blue),
-      home: ContactListScreen(),
+      home: Listagem(),
     );
   }
 }

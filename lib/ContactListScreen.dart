@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Contato.dart';
 import 'package:flutter_application_1/Cadastro.dart';
 
-class ContactListScreen extends StatefulWidget {
+class Listagem extends StatefulWidget {
   @override
-  _ContactListScreenState createState() => _ContactListScreenState();
+  _ListagemState createState() => _ListagemState();
 }
 
-class _ContactListScreenState extends State<ContactListScreen> {
+class _ListagemState extends State<Listagem> {
   List<Contato> contatos = [];
 
   void _navigateToForm([Contato? contato]) {
