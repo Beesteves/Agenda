@@ -10,18 +10,19 @@ class Listagem extends StatefulWidget {
 class _ListagemState extends State<Listagem> {
   List<Contato> contatos = [];
 
-  void _navigateToForm([Contato? contato]) {
+  void _navegacao([Contato? contato]) {
     Navigator.of(context).push(
       MaterialPageRoute(
         builder: (context) => Cadastro(
-          onSave: _addOrUpdateContact,
+          onDelete: _removerContato,
+          onSave: _adicionarContato,
           contato: contato,
         ),
       ),
     );
   }
 
-  void _addOrUpdateContact(Contato contato) {
+  void _adicionarContato(Contato contato) {
     setState(() {
       if (contatos.contains(contato)) {
         contatos[contatos.indexOf(contato)] = contato;
@@ -31,7 +32,7 @@ class _ListagemState extends State<Listagem> {
     });
   }
 
-  void _deleteContact(Contato contato) {
+  void _removerContato(Contato contato) {
     setState(() {
       contatos.remove(contato);
     });
@@ -46,13 +47,13 @@ class _ListagemState extends State<Listagem> {
         itemBuilder: (context, index) {
           return ListTile(
             title: Text(contatos[index].nome),
-            subtitle: Text('${contatos[index].telefone}\n${contatos[index].email}'),
-            onTap: () => _navigateToForm(contatos[index]),
+            subtitle: Text('${contatos[index].telefone}   ${contatos[index].email}'),
+            onTap: () => _navegacao(contatos[index]),
           );
         },
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => _navigateToForm(),
+        onPressed: () => _navegacao(),
         child: const Icon(Icons.add),
       ),
     );

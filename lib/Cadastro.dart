@@ -3,10 +3,11 @@ import 'package:flutter/services.dart';
 import 'package:flutter_application_1/Contato.dart';
 
 class Cadastro extends StatefulWidget {
+  final Function(Contato) onDelete;
   final Function(Contato) onSave;
   final Contato? contato;
 
-  Cadastro({required this.onSave, this.contato});
+  Cadastro({required this.onDelete, required this.onSave, this.contato});
 
   @override
   _CadastroState createState() => _CadastroState();
@@ -99,6 +100,14 @@ class _CadastroState extends State<Cadastro> {
               if (widget.contato != null) ...[
                 const SizedBox(height: 10),
               ],
+              const SizedBox(height: 20),
+              ElevatedButton(
+                onPressed: () {
+                  widget.onDelete(widget.contato!);
+                  Navigator.of(context).pop();
+                },
+                child: const Text('Remover'), 
+              ),
             ],
           ),
         ),
